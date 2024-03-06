@@ -1,5 +1,5 @@
-Prepare Your Content:
-Ensure that you have the necessary content for your website, including HTML, CSS, JavaScript, and any other assets like images or videos.
+# Prepare Your Content:
+<li>Ensure that you have the necessary content for your website, including HTML, CSS, JavaScript, and any other assets like images or videos.</li>
 Get a Domain Name:
 If you don't have a domain name, you'll need to register one through a domain registrar. Choose a domain name that reflects your website's purpose.
 Set Up DNS:
