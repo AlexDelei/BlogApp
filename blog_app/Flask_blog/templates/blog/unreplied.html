@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="post">
+        <header>
+            <div>
+                <h1>{{ post[0][1] }}</h1>
+                <p class="body">{{ post[0][2] }}</p>
+                <p id="single_post_p">Post by {{ post[0][5] }} on {{ post[0][3].strftime('%d %b %Y') }} at {{ post[0][3].strftime('%X') }}</p>
+            </div>
+        {% if g.user[0] == post[0][4] %}
+            <a href="{{ url_for('blog.update', id = post[0][0]) }}">Edit</a>
+        {% endif %}
+        </header>
+        {% if post[0][6] %}
+            {% set image_data = post[0][6]|b64encode %}
+            <img src="data:image/jpeg;base64,{{ image_data.decode('utf-8') }}" alt="" id="img">
+        {% endif %}
+    </article>
+    <hr>
+    <p>This is the Unreplied section</p>
+    <p>{{ error }}</p>
+    {% for i in comments %}
+        <div class="divider">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ i[0] }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+{% endblock %}
