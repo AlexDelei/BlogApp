@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="post">
+        <header>
+            <div>
+                <h1>{{ post[0][1] }}</h1>
+                <p class="body">{{ post[0][2] }}</p>
+                <p id="single_post_p">Post by {{ post[0][5] }} on {{ post[0][3].strftime('%d %b %Y') }} at {{ post[0][3].strftime('%X') }}</p>
+            </div>
+        {% if g.user[0] == post[0][4] %}
+            <a href="{{ url_for('blog.update', id = post[0][0]) }}">Edit</a>
+        {% endif %}
+        </header>
+        {% if post[0][6] %}
+            {% set image_data = post[0][6]|b64encode %}
+            <img src="data:image/jpeg;base64,{{ image_data.decode('utf-8') }}" alt="" id="img">
+        {% endif %}
+    </article>
+    <hr>
+    <div class="Unreplied">
+        <a href="{{ url_for('blog.unreplied_comments', id=post[0][0]) }}">click to view Unreplied</a>
+    </div>
+    <hr>
+    <br><br>
+    <div class="comments_body">
+            {% if zipped %}
+            {% if len_2 > 0 %}
+                {% for i, k in zipped %}
+                    <div class="divider">
+                        <div class="card" id="parent_class">
+                            <sh></sh>
+                            <div class="card-body">
+                                <p class="card-text" id="{{ i[3] }}">{{ i[0] }}</p>
+                                <p class="card-text" id="card-name">from {{ i[1].title() }}</p>
+                                <p class="card-text" id="card-date">{{ i[2].strftime('%H:%M%p') }} on {{ i[2].strftime('%d %b %Y') }} ✔︎</p>
+                            </div>
+                        </div>
+                        <div id="user" class="collapse">
+                            <form action="{{ url_for('blog.reply_comment', id=post[0][0], author=i[4] )}}" id="reply_form" method="post">
+                                <textarea class="reply_area" name="reply" placeholder="Reply to {{ i[1] }}"></textarea>
+                                <button type="submit" id="send_me">
+                                    <span id="send_icon">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    {% if result %}
+                        {% if i[5] == result[0][2] %}
+                            <div class="replies">
+                                    <div class="card" id="replies_card">
+                                        <div class="card-body">
+                                            <p id="green_text" class="card-text">{{k[1]}}</p>
+                                            <p class="card-text" id="from_replier" style="color: red;">From {{ post[0][5] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        {% endif %}
+                    {% endif %}
+                    <hr>
+                {% endfor %}
+            {% else %}
+                {% for i in comments %}
+                    <div class="divider">
+                        <div class="card" id="parent_class">
+                            <sh></sh>
+                            <div class="card-body">
+                                <p class="card-text" id="{{ i[3] }}">{{ i[0] }}</p>
+                                <p class="card-text" id="card-name">from {{ i[1].title() }}</p>
+                                <p class="card-text" id="card-date">{{ i[2].strftime('%H:%M%p') }} on {{ i[2].strftime('%d %b %Y') }} ✔︎</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-warning" data-bs-toggle="collapse" data-bs-target="#user">Reply {{  i[1] }}</a>
+                        <div id="user" class="collapse">
+                            <form action="{{ url_for('blog.reply_comment', id=post[0][0], author=i[4] )}}" id="reply_form" method="post">
+                                <textarea class="reply_area" name="reply" placeholder="Reply to {{ i[1] }}"></textarea>
+                                <button type="submit" id="send_me">
+                                    <span id="send_icon">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
