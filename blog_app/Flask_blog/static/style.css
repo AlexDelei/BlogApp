@@ -171,7 +171,7 @@ nav ul li a, nav ul li span, header .action
 .post .body 
 {
     white-space: pre-line;
-    color: rgba(2, 211, 54, 0.983);
+    color: rgb(20, 201, 225);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 9px;
     background-color: rgba(130, 105, 105, 0.629);
