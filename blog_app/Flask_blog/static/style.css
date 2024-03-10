@@ -215,7 +215,7 @@ form
     border-radius: 7px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     max-width: 790px;
-    margin-left: 15px;
+    margin-left: 18px;
 }
 .like-button
 {
@@ -614,4 +614,31 @@ input[type=submit]
     height: 40px;
     border: none;
     color: white;
+}
+.update_form
+{
+    background-color: #000;
+    border-radius: 6px;
+}
+.update_title
+{
+    background-color: rgba(72, 72, 134, 0.438);
+    width: 400px;
+    height: 40px;
+    border: none;
+    color: white;
+}
+.btn-success
+{
+    background-color: rgb(2, 215, 2);
+    margin-left: 61%;
+}
+.btn-danger
+{
+    width: 50px;
+}
+.danger_zone
+{
+    background-color: red;
+    height: 2px;
 }
