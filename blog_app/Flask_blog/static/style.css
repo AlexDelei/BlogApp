@@ -6,7 +6,7 @@
 }
 body
 {
-    max-width: 960px;
+    max-width: 860px;
     margin: 0 auto;
     background: rgb(222, 171, 109);
     border-radius: 5px;
@@ -144,6 +144,7 @@ nav ul li a, nav ul li span, header .action
 {
     background-color: rgb(29, 25, 25);
     border-radius: 10px;
+
 }
 .post > header
 {
@@ -210,11 +211,11 @@ form
 }
 .row
 {
-    background-color: #5e3802;
+    background-color: #a09cb145;
     border-radius: 7px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 100%;
-    margin-left: 0px;
+    max-width: 790px;
+    margin-left: 15px;
 }
 .like-button
 {
@@ -245,6 +246,7 @@ form
 {
     background-color: rgb(15, 11, 11);
     padding: 8px;
+    border-radius: 6px;
 
 }
 .card
@@ -575,6 +577,15 @@ textarea
     align-items: center;
     justify-content: center;
 }
+
+.resizable-image {
+    max-width: 600px;  /* Set the maximum width */
+    max-height: 350px; /* Set the maximum height */
+    width: auto;       /* Allow the image to scale proportionally */
+    height: auto;      /* Allow the image to scale proportionally */
+    border-radius: 11px;
+    margin-left: 12%;
+}
 .reply_area
 {
     width: 80%;
@@ -590,4 +601,17 @@ input[type=submit]
 {
     align-self: start;
     min-width: 100px;
+}
+.create_form
+{
+    background-color: black;
+    border-radius: 6px;
+}
+.create_title
+{
+    background-color: rgba(72, 72, 134, 0.438);
+    width: 400px;
+    height: 40px;
+    border: none;
+    color: white;
 }
