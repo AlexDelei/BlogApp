@@ -22,15 +22,16 @@
                 
                 {% if post[6] %}
                     {% set image_data = post[6]|b64encode %}
-                    <img src="data:image/jpeg;base64,{{ image_data.decode('utf-8') }}" alt="" id="img">
+                    <img src="data:image/jpeg;base64,{{ image_data.decode('utf-8') }}" alt="" id="img" class="resizable-image">
                 {% endif %}
-                
+                <br>
                 <section class="row">
-                    <p class="body">{{ post[2] }}</p>
-                    <p id="likes">{{ post[7] }} likes</p>
-
-
-                    <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Leave a comment<i class="fa-solid fa-pen"></i></button>
+                    <p class="body">
+                        {{ post[2] }}
+                        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo"><i class="fa-solid fa-pen"></i></button>
+                    </p>&nbsp;
+                     {{ post[7] }} likes &nbsp;
+                    
                     <div id="demo" class="collapse">
                         <form action="{{ url_for('blog.comment_post', id = post[0]) }}" method="post" id="comment_form">
                             <textarea type="text" name="body" placeholder="Type a comment" id="comment"></textarea>
