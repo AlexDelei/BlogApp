@@ -3,7 +3,9 @@
     {% block header %}
         <h1>Posts</h1>
         {% if g.user %}
-            <a href="{{ url_for('blog.create') }}" class="action" id="edit">Add Post</a>
+            <a href="{{ url_for('blog.create') }}" class="action floating-button">
+                <i class="fa-solid fa-plus"></i>
+            </a>
         {% endif %}
     {% endblock %}
 
@@ -28,7 +30,7 @@
                 <section class="row">
                     <p class="body">
                         {{ post[2] }}
-                        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo"><i class="fa-solid fa-pen">Comment</i></button>
                     </p>&nbsp;
                      {{ post[7] }} likes &nbsp;
                     
