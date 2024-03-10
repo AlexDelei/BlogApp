@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-        <label for="title">Title</label>
-        <input name="title" id="title" value="{{ request.form['title'] or post['title'] }}" required>
-        <label for="body">Body</label>
-        <textarea name="body" id="body">{{ request.form['body'] or post[0][2] }}</textarea>
-        <input type="submit" value="Save">
+    <form method="post" class="update_form">
+        <br>
+        <input name="title" value="{{ request.form['title'] or post['title'] }}" required class="update_title" placeholder="Update title">
+        <textarea name="body" id="body" class="update_body">{{ request.form['body'] or post[0][2] }}</textarea>
+        <input type="submit" value="Save" class="btn btn-success">
     </form>
-    <hr>
+    <hr class="danger_zone">
     <form action="{{ url_for('blog.delete', id = post[0][0]) }}" method="post">
-        <input type="submit" class="danger" value="Delete" onclick="return confirm('Are you sure?');">
+        <input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure?');">
     </form>
+    <hr class="danger_zone">
 {% endblock %}
