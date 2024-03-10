@@ -5,14 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
-        <label for="title">Title</label>
-        <input name="title" id="title" value="{{ request.form['title'] }}" required>
-        <label for="body">Body</label>
+    <form method="post" enctype="multipart/form-data" class="create_form">
+        <br>
+        <input name="title" value="{{ request.form['title'] }}" required class="create_title" placeholder="Choose a title if you want">
+        <textarea name="body" id="body" class="create_body" placeholder="Type your response">{{ request.form['body'] }}</textarea> 
         {{ form.csrf_token }}
-        {{ form.file.label }}
         {{ form.file }}
-        <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-        <input type="submit" value="Post" id="save">
+        <input type="submit" value="Post" class="btn btn-primary">
     </form>
 {% endblock %}
